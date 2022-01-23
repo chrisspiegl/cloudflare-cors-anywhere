@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "name": "cloudflare-cors-worker",
+  "version": "1.0.0",
+  "description": "CORS 'anywhere' proxy in a Cloudflare worker with expiring API Keys.",
+  "main": "index.js",
+  "scripts": {
+    "cu": "ncu",
+    "cu:fix": "ncu -u",
+    "test": "xo --fix"
+  },
+  "repository": "chrisspiegl/cloudflare-cors-anywhere",
+  "license": "MIT",
+  "author": {
+    "name": "Chris Spiegl",
+    "email": "chris@chrisspiegl.com",
+    "url": "https://chrisspiegl.com/"
+  },
+  "devDependencies": {
+    "xo": "^0.47.0"
+  }
+}
