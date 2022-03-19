@@ -244,6 +244,17 @@ async function handleRequest(request) {
 		case '/':
 			return homeRequest(request);
 		default: {
+			// Not 100% sure if this is a good idea…
+			// Right now all OPTIONS requests are just simply replied to because otherwise they fail.
+			// This is necessary because apparently, OPTIONS requests do not carry the `x-cors-proxy-api-key` header so this can not be authorized.
+			if (request.method === 'OPTIONS') {
+				return new Response(null, {
+					headers: fix(new Headers(), request, true),
+					status: 200,
+					statusText: 'OK',
+				});
+			}
+
 			// The "x-cors-proxy-api-key" header is sent when authenticated.
 			if (request.headers.has('x-cors-proxy-api-key')) {
 				// Throws exception when authorization fails.
